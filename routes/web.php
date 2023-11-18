@@ -51,13 +51,20 @@ Route::middleware(['auth', 'role:admin'] )->group(function(){
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
 });
+
+
 
 Route::middleware(['auth', 'role:admin|manager'])->group(function(){
 
-    Route::get('/debt_info/{costumer}',[CostumerController::class,'debt_info'])->name('debt_info');
+
 
     Route::resource('/costumer', CostumerController::class);
+    Route::get('/debt_info/{costumer}',[CostumerController::class,'debt_info'])->name('debt_info');
+    Route::get('/search',[CostumerController::class,'search'])->name('admin.search');
+    Route::get('/message',[DebtController::class,'message'])->name('admin.message');
+    Route::get('/message/last-week',[DebtController::class,'last_week'])->name('admin.last_week');
 
     Route::resource('/debt', DebtController::class);
 

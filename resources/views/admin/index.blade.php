@@ -27,7 +27,7 @@
                             @foreach($users as $user)
                                 <tr>
                                     <th scope="row">{{$i++}}</th>
-                                    <td>{{$user->name}}</td>
+                                    <td >{{$user->name}}</td>
                                     <td>{{$user->email}}</td>
 
                                     <td>{{ $user->getRoleNames()->implode(',')}}</td>
@@ -41,7 +41,7 @@
                                             <button onclick="del({{$user->id}})" type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
 @endif
                                             <a class="btn btn-warning" href="{{url('editUser/'.$user->id)}}"> <i class="fa fa-pencil"></i> </a>
-                                            <a href="{{route('admin.permission',$user->id)}}" class="btn btn-primary"><i class="fa fa-user"></i></a>
+{{--                                            <a href="{{route('admin.permission',$user->id)}}" class="btn btn-primary"><i class="fa fa-user"></i></a>--}}
 
                                         </form>
 

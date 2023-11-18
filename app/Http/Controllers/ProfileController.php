@@ -21,14 +21,12 @@ class ProfileController extends Controller
     public function index(): View
     {
         $users = User::paginate(20);
-
         return view('admin.index', ['users' => $users]);
     }
 
     public function create(): View
     {
         $roles = Role::all();
-
         return view('admin.addUser',['roles'=>$roles]);
     }
 
@@ -47,7 +45,6 @@ class ProfileController extends Controller
             $user->email = $request->email;
             $user->password = bcrypt($request->password);
             $user->assignRole($request->role);
-
             $user->save();
         }
         return redirect()->route('admin.index')->with('success', 'Muvaffaqqiyatli qo\'shildi');
@@ -56,7 +53,6 @@ class ProfileController extends Controller
 
     public function edit($id): View
     {
-
         $roles = Role::all();
         $user = User::where('id', $id)->first();
         return view('admin.editUser', compact('user'),['roles'=>$roles]);

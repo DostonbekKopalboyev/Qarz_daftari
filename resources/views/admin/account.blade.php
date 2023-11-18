@@ -9,18 +9,20 @@
                     @csrf
 
                     <div class="col-md-5">
-                        <label class="form-label">eski parol</label>
-                        <input type="password" class="form-control" name="old_password" placeholder="eski parolni kiriting">
+                        <label class="form-label">@lang('message.old_password')</label>
+                        <input type="password" class="form-control" name="old_password">
                     </div>
+                    <br>
 
                     <div class="col-md-5">
-                        <label class="form-label">yangi parol</label>
-                        <input type="password" class="form-control" name="new_password" placeholder="yangi parolni kiriting">
+                        <label class="form-label">@lang('message.new_password')</label>
+                        <input type="password" class="form-control" name="new_password">
                     </div>
+                    <br>
 
                     <div class="col-md-5">
-                        <label class="form-label">qayta urinish</label>
-                        <input type="password" class="form-control" name="confirm_password" placeholder="parolni qayta kiriting">
+                        <label class="form-label">@lang('message.new_password_2')</label>
+                        <input type="password" class="form-control" name="confirm_password" >
                     </div>
 
 

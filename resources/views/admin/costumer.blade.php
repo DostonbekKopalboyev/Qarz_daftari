@@ -9,61 +9,63 @@
 
                         {{--                    modal uchun button--}}
                         <button type="button" id="showModal" style="margin: 30px;" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"> @lang('message.create_button') </button>
+                        <table class="table-bordered" style=" display: table;width: 100%;table-layout: fixed;" >
+                            <thead class="header">
+                            <tr style="text-align: center;">
 
-                        <table class="table table-hover">
-                            <thead>
-                            <tr>
-
-                                <th>
+                                <th style="width: 5%">
                                     @lang('message.id')
                                 </th>
-                                <th>
+                                <th style="width: 15%">
                                     @lang('message.cust_name')
                                 </th>
-                                <th>
+                                <th style="width: 15%">
                                     @lang('message.phone_num')
                                 </th>
-                                <th>
+                                <th style="width: 15%">
                                     @lang('message.address')
                                 </th>
-                                <th>
+                                <th style="width: 15%" >
                                     @lang('message.description')
                                 </th>
-                                <th>
+                                <th style="width: 15%" >
                                     @lang('message.debt')
                                 </th>
-                                <th>
-                                    @lang('message.status')
-                                </th>
-                                <th>
+                                {{--                                <th style="width: 15%">--}}
+                                {{--                                    @lang('message.status')--}}
+                                {{--                                </th>--}}
+                                <th style="width: 20%;display: inline-block;" >
                                     @lang('message.operation')
                                 </th>
                             </tr>
                             </thead>
                             <tbody>
+                            @php
+                                $i=1;
+                            @endphp
                             @foreach($costumers as $costumer)
-                                <tr>
-                                    <td>{{$costumer->id}}</td>
+
+                                <tr style="text-align: center;">
+                                    <td>{{$i++}}</td>
                                     <td>{{$costumer->name}}</td>
                                     <td>{{$costumer->phone}}</td>
                                     <td>{{$costumer->address}}</td>
                                     <td>{{$costumer->description}}</td>
                                     <td><span class="money">{{$costumer->debt}}</span></td>
-                                    <td>{{$costumer->trust_status}}</td>
-                                    <td>
+                                    {{--                                    <td>{{$costumer->trust_status}}</td>--}}
+                                    <td >
                                         @if(auth()->user()->hasRole('admin'))
-                                        <form action="{{route('costumer.destroy', $costumer->id)}}" id="deleteCostumerForm{{$costumer->id}}" method="POST">
-
-                                            @csrf
-                                            @method('DELETE')
-                                            <button onclick="del({{$costumer->id}})" class="btn btn-danger" type="button"><i class="fa fa-trash"></i></button>
-                                        </form>
-
-                                            <a onclick="func({{$costumer}}, '{{ route('costumer.update', $costumer->id) }}')"
+                                            <form action="{{route('costumer.destroy', $costumer->id)}}" id="deleteCostumerForm{{$costumer->id}}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button onclick="del({{$costumer->id}})" class="btn btn-danger" type="button"><i class="fa fa-trash"></i></button>
+                                            </form>
+                                            <a onclick="func({{$costumer}}, '{{route('costumer.update', $costumer->id) }}')"
                                                id="showModal" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal2"><i class="fa fa-pencil"></i></a>
                                         @endif
-
-                                        <a href="{{route('debt_info',$costumer->id)}}" class="btn btn-primary" ><i class="fa fa-wallet"></i></a>
+                                        @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('manager'))
+                                            <a href="{{route('debt_info',$costumer->id)}}" class="btn btn-primary"><i class="fa fa-wallet"></i></a>
+                                        @endif
 
                                     </td>
                                 </tr>
@@ -131,14 +133,14 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="{{route('costumer.store')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('costumer.store')}}" id="myForm" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-body">
                             <label for="name">@lang('message.enter_cust_name')</label>
                             <input type="text" id="name" name="name"  class="form-control" required>
 
                             <label for="phone">@lang('message.enter_cust_phone')</label>
-                            <input type="text" id="phone" name="phone" class="form-control" required>
+                            <input type="number" id="phone" name="phone" class="form-control" required>
 
                             <label for="address">@lang('message.enter_cust_address')</label>
                             <input type="text" id="address" name="address" class="form-control">
@@ -213,8 +215,20 @@
 
                 });
             });
-        </script>
 
+
+                function validateInput() {
+                const inputText = document.getElementById("phone").value;
+                const isNumeric = /^[+0-9\s]+$/.test(inputText);
+
+                if (isNumeric) {
+                // The input is a valid number, you can proceed with the form submission.
+                document.getElementById("myForm").submit();
+            } else {
+                alert("Iltimos raqam kiriting");
+            }
+            }
+        </script>
     @endif
 @endsection
 

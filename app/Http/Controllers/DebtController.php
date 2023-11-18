@@ -5,10 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Costumer;
 use App\Models\Debt;
 use App\Models\User;
+use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Permission;
+
+
+
 
 class DebtController extends Controller
 {
@@ -93,5 +98,76 @@ class DebtController extends Controller
             return view('admin.permissions',['user_permissions'=>$user_permission, 'user'=>$user,'permissions'=>$permissions]);
         }
     }
+
+
+    public function message(){
+        $today = Carbon::now()->toDateString();
+        $debts = Debt::whereDate('end_day', '=', $today)
+                ->get();
+        $costumers = Costumer::all();
+        return view('admin.message', ['debts'=>$debts,'costumers'=>$costumers]);
+    }
+
+
+
+    public function last_week()
+    {
+
+        $sevenDaysAgo = Carbon::now()->subDays(6)->toDateString();
+        $debts = Debt::whereDate('end_day', '>=', $sevenDaysAgo)
+            ->whereDate('end_day', '<=', Carbon::now()->toDateString())
+            ->get();
+
+        // Output or process the selected Debt records
+        foreach ($debts as $debt) {
+            return view('admin.last_week',['debts'=>$debts]);
+            // Add other fields as needed
+        }
+
+
+
+
+
+
+//        $debts=Debt::all();
+//        //$endDate = 1haftalik end_daylarni sanisi
+//        $endDate =  date(Carbon::today()->copy()->subDays(6));
+//        //$startDate bugungi kun
+//        $startDate =date(Carbon::today());
+//
+//        //1haftalik kunlar sanalari
+//        $period = (CarbonPeriod::create($endDate, $startDate)->toArray());
+//
+//        // 1haftalik kunlarni yil-oy-kun korinishida yozib beradi
+//        foreach ($period as $date) {
+//            $arr1[]= $date->toDateString() ;
+//        }
+////        dd(gettype($arr1[1]));
+//        //1haftalik end_day lar
+//        $endDays = Debt::pluck('end_day')->toArray();
+////        foreach ($endDays as $item) {
+////            $arr2[]=$item->toDateString();
+////        }
+////        dd($endDays);
+//        foreach ($arr1 as $date) {
+////        dd(gettype($date));
+//            foreach ($endDays as $week) {
+////            dd($week);
+//                if ($week === $date) {
+////               dd(gettype(Debt::where('end_day')));
+//                    $massiv[]=Debt::whereDate($week,'end_day');
+//                    dd($massiv);
+////                    return view('admin.last_week',['debts'=>$massiv]);
+//                }
+////            echo $date->toDateString() . '<br>';
+//            }
+//        }
+//        foreach ($massiv as $item) {
+//
+//        }
+//        return view('admin.last_week',['debts'=>$item]);
+
+    }
+
 
 }

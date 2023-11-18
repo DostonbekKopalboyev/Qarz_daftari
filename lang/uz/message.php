@@ -10,7 +10,8 @@ return [
     'debt' => 'Qarzdorlik',
     'payment' => 'To\'lov',
     'statistics' => 'Statistika',
-    'list' => 'Foydalanuvchilar ro\'yhati',
+    'list' => 'Foydalanuvchi ro\'yhati',
+    'xabar'=>'Xabarlar',
     'admin' => 'admin',
     'myprofile' => 'Shaxsiy kabinet',
 
@@ -65,6 +66,7 @@ return [
     'cost' => 'Narxi',
     'end_day' => 'Oxirgi kuni',
     'today_day' => 'Bugungi kun',
+    'time_taken'=>'Olgan vaqti',
     'select_cust' => 'Mijozni tanlang',
     'add_product' => 'Mahsulotni kiriting',
     'add_cost_product' => 'Mahsulot narxini kiriting',
@@ -82,6 +84,15 @@ return [
     'weekly_payment_stat' => 'Haftalik to\'lovlar indeksi',
     'w_debts' => 'Haftalik qarzdorliklar',
     'w_payments' => 'Haftalik qilingan to\'lovlar',
+
+    //istisno
+    'exit'=>'Chiqish',
+    'last_week'=>'Oxirgi 7 kun',
+
+    //My profile
+    'old_password'=>'Eski parolni kiriting',
+    'new_password'=>'Yangi parolni kiriting',
+    'new_password_2'=>'Yangi parolni qayta kiriting',
 
 
 ];
