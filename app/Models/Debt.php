@@ -21,4 +21,6 @@ class Debt extends Model
     {
         return $this->belongsTo(Costumer::class,'costumer_id','id');
     }
+
+
 }

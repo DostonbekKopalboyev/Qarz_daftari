@@ -10,6 +10,7 @@
         'payment' => 'Payment',
         'statistics' => 'Statistics',
         'list' => 'List of users',
+        'xabar'=>'Messages',
         'admin' => 'admin',
         'myprofile' => 'My Profile',
 
@@ -64,6 +65,8 @@
         'cost' => 'Cost',
         'end_day' => 'End of day',
         'today_day' => 'Today',
+        'time_taken'=>'Time Token',
+
         'select_cust' => 'Select Customer',
         'add_product' => 'Enter the product',
         'add_cost_product' => 'Enter the price of the product',
@@ -81,5 +84,14 @@
         'weekly_payment_stat' => 'Index of payments weekly',
         'w_debts' => 'Weekly debts',
         'w_payments' => 'Weekly payments',
+
+        //istisno
+        'exit'=>'Exit',
+        'last_week'=>'Last 7 days',
+
+//        my profile
+        'old_password'=>'Enter the old password',
+        'new_password'=>'Enter a new password',
+        'new_password_2'=>'Re-enter the new password',
 
     ];

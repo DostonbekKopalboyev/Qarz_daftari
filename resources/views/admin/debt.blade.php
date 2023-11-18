@@ -9,47 +9,50 @@
                         {{--                    modal uchun button--}}
                         <button type="button" id="showModal" style="margin: 30px;" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">@lang('message.create_button')</button>
 
-                        <table class="table table-hover">
+                        <table class="table table-hover" style="width: 100%;">
                             <thead>
                             <tr>
 
-                                <th>
+                                <th style="width: 5%;">
                                     @lang('message.id')
                                 </th>
-                                <th>
+                                <th style="width: 15%;">
                                     @lang('message.cust_name')
                                 </th>
-                                <th>
+                                <th style="width: 15%;">
                                     @lang('message.user_name')
                                 </th>
-                                <th>
+                                <th style="width: 20%;">
                                     @lang('message.product')
                                 </th>
-                                <th>
+                                <th style="width: 15%;">
                                     @lang('message.cost')
                                 </th>
-                                <th>
+                                <th style="width: 15%;">
                                     @lang('message.end_day')
                                 </th>
-                                <th>
+                                <th style="width: 15%;">
                                     @lang('message.today_day')
                                 </th>
-                                <th>
-                                    @lang('message.status')
-                                </th>
+{{--                                <th>--}}
+{{--                                    @lang('message.status')--}}
+{{--                                </th>--}}
                             </tr>
                             </thead>
+                            @php
+                                $i=1;
+                            @endphp
                             <tbody>
                             @foreach($debts as $debt)
                                 <tr>
-                                    <td>{{$debt->id}}</td>
+                                    <td>{{$i++}}</td>
                                     <td>{{$debt->costumer->name}}</td>
                                     <td>{{$debt->user->name}}</td>
                                     <td>{{$debt->product}}</td>
                                     <td><span class="money">{{$debt->quantity}}</span></td>
                                     <td>{{$debt->end_day}}</td>
                                     <td>{{$debt->created_at}}</td>
-                                    <td>{{$debt->status}}</td>
+{{--                                    <td>{{$debt->status}}</td>--}}
                                 </tr>
                             @endforeach
 

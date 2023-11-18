@@ -36,10 +36,13 @@
                             </tr>
                             </thead>
                             <tbody>
+                            @php
+                                $i=1;
+                            @endphp
 
                             @foreach($debts as $debt)
                                 <tr>
-                                    <td>{{$debt->id}}</td>
+                                    <td>{{$i++}}</td>
                                     <td>{{$debt->user->name}}</td>
                                     <td>{{$debt->product}}</td>
                                     <td><span class="money">{{$debt->quantity}}</span></td>
@@ -76,10 +79,13 @@
                                 </th>
                             </tr>
                             </thead>
+                            @php
+                                $i=1;
+                            @endphp
                             <tbody>
                             @foreach($payments as $payment)
                                 <tr>
-                                    <td>{{$payment->id}}</td>
+                                    <td>{{$i++}}</td>
                                     <td>{{$payment->user->name}}</td>
                                     <td><span class="money">{{$payment->quantity}}</span></td>
                                     <td>{{$payment->created_at}}</td>

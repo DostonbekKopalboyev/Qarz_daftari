@@ -52,22 +52,24 @@
     <div class="sidebar pe-4 pb-3">
         <nav class="navbar bg-light navbar-light">
             <a href="{{route('admin.index')}}" class="navbar-brand mx-4 mb-3">
-                <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>DASHMIN</h3>
+                <h3 class="text-primary"><i class="fa-solid fa-cart-plus"></i> <i class="fa-solid fa-book"></i></h3>
             </a>
             <div class="d-flex align-items-center ms-4 mb-4">
             </div>
             <div class="navbar-nav w-100">
 
 
-                <a href="{{url('costumer')}}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>@lang('message.customers')</a>
-                <a href="{{url('debt')}}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>@lang('message.debt')</a>
-                <a href="{{url('payment')}}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>@lang('message.payment')</a>
+                <a href="{{url('costumer')}}" class="nav-item nav-link active"><i class="fa-solid fa-users me-2"></i>@lang('message.customers')</a>
+                <a href="{{url('debt')}}" class="nav-item nav-link active"><i class="fa-solid fa-cart-shopping me-2"></i></i>@lang('message.debt')</a>
+                <a href="{{url('payment')}}" class="nav-item nav-link active"><i class="fa-solid fa-money-bill-1-wave me-2"></i>@lang('message.payment')</a>
 
                 @if(auth()->user()->hasRole('admin'))
-                    <a href="{{url('statistics')}}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>@lang('message.statistics')</a>
+                    <a href="{{url('statistics')}}" class="nav-item nav-link active"><i class="fa-solid fa-chart-line me-2"></i>@lang('message.statistics')</a>
 
-                    <a href="{{route('admin.index')}}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>@lang('message.list')</a>
+                    <a href="{{route('admin.index')}}" class="nav-item nav-link active" style="text-align: center"><i class="fa solid fa-user me-2"></i>@lang('message.list')</a>
                 @endif
+                <a href="{{route('admin.message')}}" class="nav-item nav-link active"><i class="fa-solid fa-message me-2"></i>@lang('message.xabar')</a>
+
             </div>
 
         </nav>
@@ -85,16 +87,27 @@
             <a href="#" class="sidebar-toggler flex-shrink-0">
                 <i class="fa fa-bars"></i>
             </a>
-            <form class="d-none d-md-flex ms-4">
-                <input class="form-control border-0" type="search" placeholder="@lang('message.search')">
+            <form class="d-none d-md-flex ms-4" method="get" action="{{ route('admin.search') }}" style="align-items: center">
+            <div class="form-group mt-3 mr-2 " style="width: 180px; display: inline-block;align-items: center; ">
+                <select name="context" class="form-control" style="align-items: center">
+                    <option value="costumers">@lang('message.customers')</option>
+                    <option value="debts">@lang('message.debt')</option>
+                    <option value="payments">@lang('message.payment')</option>
+                    <option value="permissions">@lang('message.list')</option>
+                    <option value="messages">@lang('message.xabar')</option>
+                    <option value="last_weeks">@lang('message.last_week')</option>
+                </select>
+            </div>
+                <input class="form-control border-0" type="search" placeholder="@lang('message.search')" name="search" style="width: 150px;">
+                <button class="btn btn-outline-success ml-3 " type="submit">@lang('message.search')</button>
             </form>
 
 
 {{--            Tilni tanlash uchun--}}
 
-            <div class="navbar-nav align-items-center ms-auto">
+            <div class="navbar-nav align-items-center ms-auto" style="">
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="float: right;">
                         <i class="fa fa-language me-lg-2"></i>
                         <span class="d-none d-lg-inline-flex">@lang('message.language')</span>
                     </a>
@@ -159,7 +172,6 @@
 
         @yield('content')
 
-
         <!-- Footer Start -->
         <div class="container-fluid pt-4 px-4">
             <div class="bg-light rounded-top p-4">
@@ -193,6 +205,8 @@
     <script>
         $('.money').simpleMoneyFormat();
         console.log($('.money').text());
+
+
     </script>
 
 

@@ -30,10 +30,13 @@
                                 </th>
                             </tr>
                             </thead>
+                            @php
+                                $i=1;
+                            @endphp
                             <tbody>
                             @foreach($payments as $payment)
                                 <tr>
-                                    <td>{{$payment->id}}</td>
+                                    <td>{{$i++}}</td>
                                     <td>{{$payment->costumer->name}}</td>
                                     <td>{{$payment->user->name}}</td>
                                     <td><span class="money">{{$payment->quantity}}</span></td>
@@ -43,7 +46,7 @@
 
                             </tbody>
                         </table>
-{{$payments->links()}}
+{{--{{$payments->links()}}--}}
 
                     </div>
 
