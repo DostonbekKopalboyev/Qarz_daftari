@@ -42,6 +42,7 @@
 @endif
                                             <a class="btn btn-warning" href="{{url('editUser/'.$user->id)}}"> <i class="fa fa-pencil"></i> </a>
 {{--                                            <a href="{{route('admin.permission',$user->id)}}" class="btn btn-primary"><i class="fa fa-user"></i></a>--}}
+{{--                                            aa--}}
 
                                         </form>
 
