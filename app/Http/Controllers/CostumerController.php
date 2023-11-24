@@ -24,7 +24,7 @@ class CostumerController extends Controller
         $costumers = Costumer::paginate(20);
 //      ->sortByDesc('debt');
 
-        return view('admin.costumer')->with('costumers', $costumers);
+        return view('admin.costumer',compact('costumers'))->with('costumers', $costumers);
     }
 
     /**

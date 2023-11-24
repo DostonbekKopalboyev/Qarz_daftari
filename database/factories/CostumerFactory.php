@@ -17,10 +17,10 @@ class CostumerFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'phone' => fake()->phoneNumber(),
-            'address' => fake()->address(),
-            'description' => fake()->sentence(),
+            'name' => "Dostonbek Ko'palboyev",
+            'phone' => "+998 914269870",
+            'address' => "Xonqa tumani Navxos qishlog'i Madaniyat mahallasi Mustaqillik ko'chasi-3",
+            'description' => "Qarz daftari egasi",
         ];
     }
 }
