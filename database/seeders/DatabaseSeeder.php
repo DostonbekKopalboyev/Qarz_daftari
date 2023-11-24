@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         $this->call(RoleSeeder::class);
-
+        $this->call(Costumer::class);
         $this->call(UserSeeder::class);
         $this->call(PermissionSeeder::class);
         // \App\Models\User::factory()->create([
@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        Costumer::factory(1)->create();
+//        Costumer::factory(1)->create();
 //        User::factory(5)->create();
     }
 }
