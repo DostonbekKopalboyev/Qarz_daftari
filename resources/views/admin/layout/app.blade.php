@@ -93,7 +93,7 @@
                     <option value="costumers">@lang('message.customers')</option>
                     <option value="debts">@lang('message.debt')</option>
                     <option value="payments">@lang('message.payment')</option>
-                    <option value="permissions">@lang('message.list')</option>
+                    @if(auth()->user()->hasRole('admin')) <option value="permissions">@lang('message.list')</option> @endif
                     <option value="messages">@lang('message.xabar')</option>
                     <option value="last_weeks">@lang('message.last_week')</option>
                 </select>
