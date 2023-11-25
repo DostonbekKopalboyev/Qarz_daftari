@@ -97,6 +97,7 @@
                     <form  action="{{route('costumer.update', $costumer->id)}}"  id="update_form" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
+
                         <div class="modal-body">
                             <input id="fid" type="hidden" name="id" required>
 
@@ -223,7 +224,6 @@
                 const isNumeric = /^[+0-9\s]+$/.test(inputText);
 
                 if (isNumeric) {
-                // The input is a valid number, you can proceed with the form submission.
                 document.getElementById("myForm").submit();
             } else {
                 alert("Iltimos raqam kiriting");
@@ -231,5 +231,7 @@
             }
         </script>
     @endif
+
+
 @endsection
 
