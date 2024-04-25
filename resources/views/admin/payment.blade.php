@@ -8,11 +8,10 @@
 
                         {{--                    modal uchun button--}}
                         <button type="button" id="showModal" style="margin: 30px;" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">@lang('message.create_button')</button>
-
+                        @unless(count($payments) == 0)
                         <table class="table table-hover">
                             <thead>
                             <tr>
-
                                 <th>
                                     @lang('message.id')
                                 </th>
@@ -46,12 +45,17 @@
 
                             </tbody>
                         </table>
-{{--{{$payments->links()}}--}}
-
+                        @else
+                            <div class="card-header">
+                                <div class="row content-end">
+                                    <div class="col-4">
+                                        @lang('message.payment_mavjud_emas')
+                                    </div>
+                                </div>
+                            </div>
+                        @endunless
                     </div>
-
                 </div>
-
             </div>
         </div>
 

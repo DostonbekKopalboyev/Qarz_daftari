@@ -26,7 +26,8 @@
 
                 <div class="col-md-5">
                     <label class="form-label">@lang('message.input_role')</label>
-                    <select class="custom-select" style="" id="selectBox" required name="role[]" multiple>
+                    <select class="custom-select" style="" id="selectBox" required name="role" multiple>
+{{--            name="role[]"            --}}
                         @foreach($roles as $role)
                             <option value="{{$role->name}}">{{$role->name}}</option>
                         @endforeach

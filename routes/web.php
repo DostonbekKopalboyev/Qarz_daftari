@@ -58,7 +58,7 @@ Route::middleware(['auth', 'role:admin'] )->group(function(){
 
 Route::middleware(['auth', 'role:admin|manager'])->group(function(){
 
-
+    $url = url()->current();
 
     Route::resource('/costumer', CostumerController::class);
     Route::get('/debt_info/{costumer}',[CostumerController::class,'debt_info'])->name('debt_info');

@@ -32,7 +32,7 @@ class DebtController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -47,11 +47,18 @@ class DebtController extends Controller
                 'quantity' => 'required',
                 'end_day' => 'required'
             ]);
+            $costumer=Costumer::all();
             $debt = $request->all();
             $debt['user_id'] = auth()->user()->id;
             $costumer_id = $request->costumer_id;
             $costumer = Costumer::where('id', $costumer_id)->first();
             $costumer->debt += intval($request->quantity);
+//            dd(get_debug_type($debt['end_day']));
+            if($debt['end_day']>=Carbon::now()){
+//                dd('hello');
+                $debt['end_day']=$request->end_day;
+            }
+            else return redirect()->back()->with('error', 'Bunday vaqtda qarzni qaytarib bo\'lmaydi');
             $costumer->save();
             Debt::create($debt);
         }
@@ -119,10 +126,10 @@ class DebtController extends Controller
             ->get();
 
         // Output or process the selected Debt records
-        foreach ($debts as $debt) {
-            return view('admin.last_week',['debts'=>$debts]);
-            // Add other fields as needed
-        }
+            foreach ($debts as $debt) {
+                return view('admin.last_week',['debts'=>$debts]);
+                // Add other fields as needed
+            }
 
 
 
@@ -165,7 +172,7 @@ class DebtController extends Controller
 //        foreach ($massiv as $item) {
 //
 //        }
-//        return view('admin.last_week',['debts'=>$item]);
+        return view('admin.last_week',['debts'=>$debts]);
 
     }
 

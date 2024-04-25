@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Permission\Traits\HasRoles;
 
 class Costumer extends Model
 {
-    use HasFactory; //use SoftDeletes;
+    use HasFactory,HasRoles; //use SoftDeletes;
     protected $fillable = [
       'name', 'phone', 'address', 'description', 'debt', 'trust_status',
     ];

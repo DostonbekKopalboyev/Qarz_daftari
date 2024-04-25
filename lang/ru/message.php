@@ -13,6 +13,7 @@ return [
     'xabar'=>'Сообщения',
     'admin' => 'админ',
     'myprofile' => 'Личный кабинет',
+    'xabar_mavjud_emas'=>'Нет доступных сообщений',
 
     //    for index.blade.php
     'create_button' => 'Создать',
@@ -51,6 +52,7 @@ return [
     'enter_cust_phone' => 'Введите номер телефона Клиента',
     'enter_cust_address' => 'Введите адрес Клиента',
     'enter_cust_description' => 'Введите описание Клиента',
+    'mijoz_mavjud_emas'=>'клиент не существует',
 
     //      for debt_info.blade.php
     'table_name_1' => 'Это таблица должников',
@@ -70,9 +72,11 @@ return [
     'add_product' => 'Введите продукт',
     'add_cost_product' => 'Введите цену продукта',
     'close' => 'Закрывать',
+    'qarz_mavjud_emas'=>'Нет долга',
 
     // payment.blade.php
     'enter_payment' => 'Введите платеж',
+    'payment_mavjud_emas'=>'Нет платеж',
 
     //statistics.blade.php
     'today_debts' => 'Сумма выданных долгов сегодня',

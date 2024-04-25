@@ -9,6 +9,8 @@
                         {{--                    modal uchun button--}}
                         <button type="button" id="showModal" style="margin: 30px;" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">@lang('message.create_button')</button>
 
+                        @unless(count($debts) == 0)
+
                         <table class="table table-hover" style="width: 100%;">
                             <thead>
                             <tr>
@@ -58,7 +60,16 @@
 
                             </tbody>
                         </table>
-{{$debts->links()}}
+                        @else
+                            <div class="card-header">
+                                <div class="row content-end">
+                                    <div class="col-4">
+                                        @lang('message.qarz_mavjud_emas')
+                                    </div>
+
+                                </div>
+                            </div>
+                        @endunless
 
                     </div>
 
@@ -133,5 +144,17 @@
                     });
                 </script>
 
+    @endif
+     @if(session('error'))
+                    <script>
+                        $(document).ready(function() {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Xato...",
+                            text: "Siz o'tib ketgan vaqtni kiritdingiz!",
+                            // footer: '<a href="#">Why do I have this issue?</a>'
+                        });
+                        });
+                    </script>
     @endif
 @endsection

@@ -13,6 +13,7 @@
         'xabar'=>'Messages',
         'admin' => 'admin',
         'myprofile' => 'My Profile',
+        'xabar_mavjud_emas'=>'No message available',
 
         //    for index.blade.php
         'create_button' => 'Create',
@@ -51,6 +52,7 @@
         'enter_cust_phone' => 'Enter the Customer\'s phone number',
         'enter_cust_address' => 'Enter the Customer\'s address',
         'enter_cust_description' => 'Enter Customer\'s description',
+        'mijoz_mavjud_emas'=>'client does not exist',
 
         //      for debt_info.blade.php
         'table_name_1' => 'This is table of debters',
@@ -66,6 +68,7 @@
         'end_day' => 'End of day',
         'today_day' => 'Today',
         'time_taken'=>'Time Token',
+        'qarz_mavjud_emas'=>'There is no debt',
 
         'select_cust' => 'Select Customer',
         'add_product' => 'Enter the product',
@@ -74,6 +77,7 @@
 
         // payment.blade.php
         'enter_payment' => 'Enter payment',
+        'payment_mavjud_emas'=>'There is no payment',
 
         //statistics.blade.php
         'today_debts' => 'The amount of debts issued today',

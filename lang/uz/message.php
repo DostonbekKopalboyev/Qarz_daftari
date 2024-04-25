@@ -14,6 +14,7 @@ return [
     'xabar'=>'Xabarlar',
     'admin' => 'admin',
     'myprofile' => 'Shaxsiy kabinet',
+    'xabar_mavjud_emas'=>'Xabar mavjud emas',
 
     //    for index.blade.php
     'create_button' => 'Yaratish',
@@ -52,6 +53,7 @@ return [
     'enter_cust_phone' => 'Mijozning telefon raqamini kiriting',
     'enter_cust_address' => 'Mijozning manzilini kiriritng',
     'enter_cust_description' => 'Mijozning tasvirlanishini kiriting',
+    'mijoz_mavjud_emas'=>'Mijoz mavjud emas',
 
     //      for debt_info.blade.php
     'table_name_1' => 'Bu mijozlarning qarzdorlik jadvali',
@@ -71,9 +73,11 @@ return [
     'add_product' => 'Mahsulotni kiriting',
     'add_cost_product' => 'Mahsulot narxini kiriting',
     'close' => 'Yopish',
+    'qarz_mavjud_emas'=>'Qarzdorlik mavjud emas',
 
     // payment.blade.php
     'enter_payment' => 'To\'lovni kiritish',
+    'payment_mavjud_emas'=>'To\'lov mavjud emas',
 
     //statistics.blade.php
     'today_debts' => 'Bugun berilgan qarzlar',

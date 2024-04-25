@@ -6,21 +6,28 @@ use App\Models\Costumer;
 use App\Models\Debt;
 use App\Models\Payment;
 use App\Models\User;
+use http\Url;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use SebastianBergmann\CodeCoverage\ProcessedCodeCoverageData;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
+use function PHPUnit\Framework\isType;
 
 class CostumerController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+//        $url=url()->current();
+//        $manager  =User::where('role','manager')->first();
         $costumers = Costumer::paginate(20);
 //      ->sortByDesc('debt');
 
@@ -83,7 +90,7 @@ class CostumerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Costumer $costumer): RedirectResponse
+    public function update(Request $request,$id): RedirectResponse
     {
         if (Auth::user()->hasDirectPermission('costumer.update')) {
             $request->validate([
@@ -93,12 +100,13 @@ class CostumerController extends Controller
                 'address' => 'required'
             ]);
 
-            $costumer = Costumer::find($request->id);
-            $costumer->name = $request->name;
-            $costumer->phone = $request->phone;
-            $costumer->address = $request->address;
-            $costumer->description = $request->description;
-            $costumer->save();
+            $costumers = Costumer::find($id);
+            $costumers->update([
+                'name' => $request->name,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'description' => $request->description,
+            ]);
         }
         return redirect()->back()->with('success', 'Muvaffaqqiyatli yangilandi');
     }
@@ -129,6 +137,9 @@ class CostumerController extends Controller
     {
         $search = $request->input('search');
         $context = $request->input('context');
+//        $url = url()->current();
+//        dd($this::function($this->index())->$url);
+
 
         if ($context === 'costumers') {
             $costumers = Costumer::where('name', 'LIKE', "%$search%")
@@ -137,6 +148,8 @@ class CostumerController extends Controller
                 ->orWhere('description', 'LIKE', "%$search%")
                 ->orWhere('debt', 'LIKE', "%$search%")
                 ->get();
+            return view('admin.search', compact('costumers', 'context'), ['costumers' => $costumers]);
+
         } elseif ($context === 'debts') {
             $debt = Debt::join('costumers', 'debts.costumer_id', '=', 'costumers.id')
                 ->join('users', 'debts.user_id', '=', 'users.id')
@@ -184,7 +197,7 @@ class CostumerController extends Controller
         } elseif ($context === 'last_weeks') {
             $debt = Debt::whereDate('end_day', '>=', Carbon::now()->subDays(6)->toDateString())
                 ->whereDate('end_day', '<=', Carbon::now()->toDateString())
-            ->join('costumers', 'debts.costumer_id', '=', 'costumers.id')
+                ->join('costumers', 'debts.costumer_id', '=', 'costumers.id')
                 ->join('users', 'debts.user_id', '=', 'users.id')
                 ->where('costumers.name', 'LIKE', "%$search%")
                 ->orwhere('users.name', 'LIKE', "%$search%")
@@ -196,7 +209,5 @@ class CostumerController extends Controller
                 ->get();
             return view('admin.search', compact('debt', 'context'), ['debts' => $debt]);
         }
-
-
     }
 }

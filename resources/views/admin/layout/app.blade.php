@@ -19,8 +19,10 @@
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-{{--    for bootsrap--}}
+
+    {{--    for bootsrap--}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
@@ -101,6 +103,20 @@
                 <input class="form-control border-0" type="search" placeholder="@lang('message.search')" name="search" style="width: 150px;">
                 <button class="btn btn-outline-success ml-3 " type="submit">@lang('message.search')</button>
             </form>
+
+{{--            <div class="container">--}}
+{{--                <div class="search">--}}
+{{--                    <input type="search" name="search" id="search" placeholder="Search" class="form-control ml-4"--}}
+{{--                    style="--}}
+{{--                    width: 100%;--}}
+{{--                    text-align: center;--}}
+{{--                    padding-top: 15px;--}}
+{{--                    padding-bottom: 15px;--}}
+{{--                    "--}}
+{{--                    >--}}
+
+{{--                </div>--}}
+{{--            </div>--}}
 
 
 {{--            Tilni tanlash uchun--}}
@@ -206,9 +222,34 @@
         $('.money').simpleMoneyFormat();
         console.log($('.money').text());
 
-
     </script>
 
+{{--    search jquery--}}
+{{--    <script type="text/javascript">--}}
+{{--        $('#search').on('keyup',function (){--}}
+{{--            $value=$(this).val();--}}
+
+{{--            if($value){--}}
+{{--                $('.alldata').hide();--}}
+{{--                $('.searchdata').show();--}}
+{{--            }--}}
+{{--            else{--}}
+{{--                $('.alldata').show();--}}
+{{--                $('.searchdata').hide();--}}
+{{--            }--}}
+
+{{--            $.ajax({--}}
+{{--                type:'get',--}}
+{{--                url: '{{URL::to('search')}}',--}}
+{{--                date:{'search',$value},--}}
+
+{{--                success:function (data){--}}
+{{--                    console.log(data);--}}
+{{--                    $('#Content').html(data);--}}
+{{--                }--}}
+{{--            })--}}
+{{--        })--}}
+{{--    </script>--}}
 
     {{--    for sweet Alert--}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

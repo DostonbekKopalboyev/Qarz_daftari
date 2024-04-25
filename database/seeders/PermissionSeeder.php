@@ -32,7 +32,9 @@ class PermissionSeeder extends Seeder
         ];
         $role = Role::first();
         $user = User::first();
-        $manager  =Role::where('name','manager')->first();
+//        $manager  =Role::where('name','manager')->first();
+        $manager  =User::where('role','2')->first();
+
         foreach ($permissions as $permission){
             Permission::create(['name' => $permission]);
             $role->givePermissionTo($permission);
@@ -44,9 +46,9 @@ class PermissionSeeder extends Seeder
             'payment.store',
         ];
         foreach ($manager_permissions as $manager_permission){
+//            Permission::create(['name' => $manager_permission]);
+//            $role->givePermissionTo($manager_permission);
             $manager->givePermissionTo($manager_permission);
-
         }
-
     }
 }

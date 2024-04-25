@@ -11,6 +11,8 @@
                         <a href="{{url('costumer')}}" type="button"  style="margin: 30px;" class="btn btn-success" >@lang('message.back_button')</a>
 
                         <p>@lang('message.table_name_1')</p>
+                        @unless(count($debts) == 0)
+
                         <table class="table table-hover">
                             <thead>
                             <tr>
@@ -30,9 +32,9 @@
                                 <th>
                                     @lang('message.date')
                                 </th>
-                                <th>
-                                    @lang('message.status')
-                                </th>
+{{--                                <th>--}}
+{{--                                    @lang('message.status')--}}
+{{--                                </th>--}}
                             </tr>
                             </thead>
                             <tbody>
@@ -47,8 +49,7 @@
                                     <td>{{$debt->product}}</td>
                                     <td><span class="money">{{$debt->quantity}}</span></td>
                                     <td>{{$debt->created_at}}</td>
-                                    <td>{{$debt->status}}</td>
-
+{{--                                    <td>{{$debt->status}}</td>--}}
                                 </tr>
                             @endforeach
                             <tr>
@@ -60,7 +61,22 @@
                             </tbody>
                         </table>
 
+                        @else
+                            <div class="card-header">
+                                <div class="row content-end">
+                                    <div class="col-4">
+                                        @lang('message.qarz_mavjud_emas')
+                                    </div>
+
+                                </div>
+                            </div>
+                        @endunless
+
+                        <br><br>
                         <p>@lang('message.table_name_2')</p>
+
+                        @unless(count($payments) == 0)
+
 
                         <table class="table table-hover">
                             <thead>
@@ -98,7 +114,15 @@
                             </tr>
                             </tbody>
                         </table>
-
+                        @else
+                            <div class="card-header">
+                                <div class="row content-end">
+                                    <div class="col-4">
+                                        @lang('message.payment_mavjud_emas')
+                                    </div>
+                                </div>
+                            </div>
+                        @endunless
 
                     </div>
 

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->text('product');
             $table->text('quantity');
-            $table->date('end_day');
+            $table->time('end_day');
             $table->integer('status')->nullable();
             $table->timestamps();
         });

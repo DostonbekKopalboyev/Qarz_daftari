@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Permission\Traits\HasRoles;
 
 class Payment extends Model
 {
-    use HasFactory;
+    use HasFactory,HasRoles;
     protected $fillable = [
         'costumer_id', 'user_id', 'quantity'
     ];

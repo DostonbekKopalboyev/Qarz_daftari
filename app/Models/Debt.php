@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Permission\Traits\HasRoles;
 
 class Debt extends Model
 {
-    use HasFactory;
+    use HasFactory,HasRoles;
     protected $fillable = [
         'costumer_id', 'user_id', 'product', 'quantity', 'end_day', 'status'
     ];

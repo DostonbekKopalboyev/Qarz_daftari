@@ -2,13 +2,16 @@
 @section('content')
 
 
-<div class="content-body">
+    <div class="content-body">
     <div class="container-fluid">
         <div class="row page-titles mx-0">
             <div class="col p-md-0" >
 
                 {{--                    modal uchun button--}}
                 <a href="{{url('message')}}"  style="margin: 30px;" class="btn btn-danger"> @lang('message.exit')</a>
+
+                @unless(count($debts) == 0)
+
 
                 <table class="table table-hover mt-5" style="width: 100%;">
                     <thead>
@@ -60,6 +63,19 @@
                     </tbody>
                 </table>
                 {{--                    {{$debts->links()}}--}}
+                @else
+                    <div class="card-header">
+                        <div class="row content-end">
+                            <div class="col-4">
+                                @lang('message.xabar_mavjud_emas')
+                            </div>
+{{--                            <div class="col-md-4 text-end offset-md-4">--}}
+{{--                                <a href="{{route('admin.last_week')}}" style="margin: 30px;" class="btn btn-success">@lang('message.last_week')</a>--}}
+
+{{--                            </div>--}}
+                        </div>
+                    </div>
+                @endunless
 
             </div>
 

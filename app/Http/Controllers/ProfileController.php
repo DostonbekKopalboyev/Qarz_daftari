@@ -20,6 +20,7 @@ class ProfileController extends Controller
      */
     public function index(): View
     {
+//        dd(User::where('role','1')->first());
         $users = User::paginate(20);
         return view('admin.index', ['users' => $users]);
     }
@@ -32,6 +33,27 @@ class ProfileController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
+        $permissions = [
+            'profile.create',
+            'profile.edit',
+            'profile.store',
+            'profile.update',
+            'profile.destroy',
+            'profile.permission',
+            'costumer.store',
+            'costumer.update',
+            'costumer.destroy',
+            'costumer.debt_info',
+            'debt.store',
+            'payment.store',
+        ];
+
+        $manager_permissions = [
+            'costumer.store',
+            'debt.store',
+            'payment.store',
+        ];
+
         if(Auth::user()->hasDirectPermission('profile.store')) {
             $request->validate([
                 'name' => 'required',
@@ -44,7 +66,18 @@ class ProfileController extends Controller
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = bcrypt($request->password);
-            $user->assignRole($request->role);
+//            dd($request->role);
+            if($request->role=='admin'){
+//                dd($request->role);
+                $user->role=='1';
+                $user->assignRole(1);
+                $user->givePermissionTo($permissions);
+            }else
+                if($request->role=='manager'){ //ser::where('role','manager')
+                    $user->role=='2';
+                    $user->assignRole(2);
+                    $user->givePermissionTo($permissions);
+                }
             $user->save();
         }
         return redirect()->route('admin.index')->with('success', 'Muvaffaqqiyatli qo\'shildi');

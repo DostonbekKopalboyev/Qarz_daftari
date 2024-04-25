@@ -9,6 +9,7 @@
 
                         {{--                    modal uchun button--}}
                         <button type="button" id="showModal" style="margin: 30px;" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"> @lang('message.create_button') </button>
+                        @unless(count($costumers)==0)
                         <table class="table-bordered" style=" display: table;width: 100%;table-layout: fixed;" >
                             <thead class="header">
                             <tr style="text-align: center;">
@@ -31,15 +32,12 @@
                                 <th style="width: 15%" >
                                     @lang('message.debt')
                                 </th>
-                                {{--                                <th style="width: 15%">--}}
-                                {{--                                    @lang('message.status')--}}
-                                {{--                                </th>--}}
                                 <th style="width: 20%;display: inline-block;" >
                                     @lang('message.operation')
                                 </th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="Content" >
                             @php
                                 $i=1;
                             @endphp
@@ -73,56 +71,24 @@
 
                             </tbody>
                         </table>
-                        {{ $costumers->links() }}
-
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-
-
-{{--        modal store--}}
-        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ma'lumotlarni yangilash</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <form  action="{{route('costumer.update', $costumer->id)}}"  id="update_form" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
-
-                        <div class="modal-body">
-                            <input id="fid" type="hidden" name="id" required>
-
-                            <label for="name">Mijoz nomini yangilash</label>
-                            <input type="text" id="fname" name="name" value="" class="form-control" required>
-
-                            <label for="phone">Mijoz telefon raqamini yangilash</label>
-                            <input type="text" id="fphone" name="phone" value="" class="form-control" required>
-
-                            <label for="address">Mijoz manzilini yangilash</label>
-                            <input type="text" id="faddress" name="address" class="form-control" value=""  required>
-
-                            <label for="description">Mijoz tasvirini yangilash</label>
-                            <input type="text" id="fdescription" name="description" value="" class="form-control">
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Yopish</button>
-                                <button type="submit" class="btn btn-primary">Tahrirlash</button>
+                        @else
+                            <div class="card-header">
+                                <div class="row content-end">
+                                    <div class="col-4">
+                                        @lang('message.mijoz_mavjud_emas')
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        @endunless
+
+                    </div>
+
                 </div>
 
             </div>
         </div>
+
+{{--        <tbody id="Content" class="searchdata"></tbody>--}}
 
 
         {{--    create modal uchun--}}
@@ -160,6 +126,61 @@
 
             </div>
         </div>
+
+
+        {{--        modal update--}}
+        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ma'lumotlarni yangilash</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    @unless(count($costumers)==0)
+
+                    <form  action="{{route('costumer.update', $costumer->id)}}"  id="update_form" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+
+                        <div class="modal-body">
+                            <input id="fid" type="hidden" name="id" required>
+
+                            <label for="name">Mijoz nomini yangilash</label>
+                            <input type="text" id="fname" name="name" value="" class="form-control" required>
+
+                            <label for="phone">Mijoz telefon raqamini yangilash</label>
+                            <input type="text" id="fphone" name="phone" value="" class="form-control" required>
+
+                            <label for="address">Mijoz manzilini yangilash</label>
+                            <input type="text" id="faddress" name="address" class="form-control" value=""  required>
+
+                            <label for="description">Mijoz tasvirini yangilash</label>
+                            <input type="text" id="fdescription" name="description" value="" class="form-control">
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Yopish</button>
+                                <button type="submit" class="btn btn-primary">Tahrirlash</button>
+                            </div>
+                        </div>
+                    </form>
+                    @else
+                        <div class="card-header">
+                            <div class="row content-end">
+                                <div class="col-4">
+                                    <h5>Mijoz mavjud emas</h5>
+                                </div>
+                            </div>
+                        </div>
+                    @endunless
+
+                </div>
+
+            </div>
+        </div>
+
 
 
     </div>
