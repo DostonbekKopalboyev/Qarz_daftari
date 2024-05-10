@@ -20,7 +20,6 @@ class ProfileController extends Controller
      */
     public function index(): View
     {
-//        dd(User::where('role','1')->first());
         $users = User::paginate(20);
         return view('admin.index', ['users' => $users]);
     }
@@ -66,7 +65,6 @@ class ProfileController extends Controller
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = bcrypt($request->password);
-//            dd($request->role);
             if($request->role=='admin'){
 //                dd($request->role);
                 $user->role=='1';
@@ -146,12 +144,5 @@ class ProfileController extends Controller
         $user->revokePermissionTo($permission);
         return redirect()->back();
     }
-
-
-
-
-    /**
-     * Delete the user's account.
-     */
 
 }

@@ -20,23 +20,12 @@ use function PHPUnit\Framework\isType;
 
 class CostumerController extends Controller
 {
-
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-//        $url=url()->current();
-//        $manager  =User::where('role','manager')->first();
         $costumers = Costumer::paginate(20);
-//      ->sortByDesc('debt');
-
         return view('admin.costumer',compact('costumers'))->with('costumers', $costumers);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //
@@ -51,10 +40,6 @@ class CostumerController extends Controller
 //        }
     }
 
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request): RedirectResponse
     {
         if (Auth::user()->hasDirectPermission('costumer.store')) {
@@ -71,9 +56,6 @@ class CostumerController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Costumer $costumer)
     {
         //
@@ -87,9 +69,6 @@ class CostumerController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request,$id): RedirectResponse
     {
         if (Auth::user()->hasDirectPermission('costumer.update')) {
@@ -111,9 +90,6 @@ class CostumerController extends Controller
         return redirect()->back()->with('success', 'Muvaffaqqiyatli yangilandi');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy($id)
     {
         if (Auth::user()->hasDirectPermission('costumer.destroy')) {

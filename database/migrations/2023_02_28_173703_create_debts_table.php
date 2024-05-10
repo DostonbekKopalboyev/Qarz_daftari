@@ -17,9 +17,9 @@ return new class extends Migration
             $table->foreign('costumer_id')->references('id')->on('costumers')->onDelete('cascade');
             $table->unsignedBigInteger('user_id')->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->text('product');
-            $table->text('quantity');
-            $table->time('end_day');
+            $table->string('product');
+            $table->string('quantity');
+            $table->date('end_day');
             $table->integer('status')->nullable();
             $table->timestamps();
         });

@@ -13,7 +13,6 @@ class RoleController extends Controller
     public function index()
     {
         $roles = Role::all();
-        //dd($roles);
         return view("admin.role.index",['roles'=>$roles]);
     }
 
@@ -25,17 +24,13 @@ class RoleController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(string $id)
     {
         //

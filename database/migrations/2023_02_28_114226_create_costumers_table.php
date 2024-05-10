@@ -19,14 +19,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->bigInteger('debt')->default(0);
             $table->text('trust_status')->nullable();
-
-
-//            $table->unsignedBigInteger('user_id')->index()->nullable();
-//            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-
-
             $table->timestamps();
-            //$table->softDeletes();
         });
     }
 

@@ -50,7 +50,6 @@
                                     <td>{{$costumer->address}}</td>
                                     <td>{{$costumer->description}}</td>
                                     <td><span class="money">{{$costumer->debt}}</span></td>
-                                    {{--                                    <td>{{$costumer->trust_status}}</td>--}}
                                     <td >
                                         @if(auth()->user()->hasRole('admin'))
                                             <form action="{{route('costumer.destroy', $costumer->id)}}" id="deleteCostumerForm{{$costumer->id}}" method="POST">
@@ -88,7 +87,6 @@
             </div>
         </div>
 
-{{--        <tbody id="Content" class="searchdata"></tbody>--}}
 
 
         {{--    create modal uchun--}}
