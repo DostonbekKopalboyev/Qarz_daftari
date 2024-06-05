@@ -26,11 +26,6 @@ class CostumerController extends Controller
         return view('admin.costumer',compact('costumers'))->with('costumers', $costumers);
     }
 
-    public function create()
-    {
-        //
-    }
-
     public function debt_info(Request $request, Costumer $costumer)
     {
 //        if(Auth::user()->hasDirectPermission('costumer.debt_info')) {
@@ -56,18 +51,6 @@ class CostumerController extends Controller
 
     }
 
-    public function show(Costumer $costumer)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Costumer $costumer)
-    {
-        //
-    }
 
     public function update(Request $request,$id): RedirectResponse
     {
@@ -78,10 +61,9 @@ class CostumerController extends Controller
                 'phone' => 'required|numeric',
                 'address' => 'required'
             ]);
-
             $costumers = Costumer::find($id);
             $costumers->update([
-                'name' => $request->name,
+            'name' => $request->name,
             'phone' => $request->phone,
             'address' => $request->address,
             'description' => $request->description,
@@ -113,9 +95,6 @@ class CostumerController extends Controller
     {
         $search = $request->input('search');
         $context = $request->input('context');
-//        $url = url()->current();
-//        dd($this::function($this->index())->$url);
-
 
         if ($context === 'costumers') {
             $costumers = Costumer::where('name', 'LIKE', "%$search%")
@@ -129,7 +108,6 @@ class CostumerController extends Controller
         } elseif ($context === 'debts') {
             $debt = Debt::join('costumers', 'debts.costumer_id', '=', 'costumers.id')
                 ->join('users', 'debts.user_id', '=', 'users.id')
-//                    ->join('debts', 'debts.end_day', '=', 'users.id')
                 ->where('costumers.name', 'LIKE', "%$search%")
                 ->orwhere('users.name', 'LIKE', "%$search%")
                 ->orwhere('debts.end_day', 'LIKE', "%$search%")
